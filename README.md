@@ -9,8 +9,6 @@ A simple utility that cleans up unused bone references on your Skinned Mesh Rend
 
 This is a non-destructive tool that automatically hooks the ChilloutVR CCK avatar build event. This will not modify your original source mesh- at the cost of potentially making upload slower.
 
-You can alternatively manually run the tool directly on your source mesh using the utility found at `NotAKid/Unused Bone Ref Cleaner`.
-
 ## Why This Works:
 ChilloutVR's specific head-hiding technique is used to avoid the need for a dedicated Mirror Clone. This involves activating a [specific flag](https://docs.unity3d.com/ScriptReference/SkinnedMeshRenderer-forceMatrixRecalculationPerRender.html) on the skinned mesh, triggering reskinning during each camera render while the avatar is worn. However, this approach can impact performance severely depending on environment and how many cameras can currently see your local avatar. To mitigate this, ChilloutVR filters out any mesh not needing this performance-intensive flag by checking against the `SkinnedMeshRender.bones` array to determine if it has any bones actively being hidden.
 
